@@ -133,6 +133,8 @@ button {
 /* header */
 .wrapper {
   border-bottom: 1px solid var(--accent-color);
+  box-shadow: 0px 2px 1px rgba(46, 47, 66, 0.08),
+    0px 1px 1px rgba(46, 47, 66, 0.16), 0px 1px 6px rgba(46, 47, 66, 0.08);
 }
 .header-container {
   display: flex;
@@ -182,10 +184,10 @@ button {
 
   padding-top: 24px;
   padding-bottom: 24px;
-}
-.list-link-wrap {
   position: relative;
+  transition: color var(--transition);
 }
+
 .nav-list-link::after {
   content: "";
   width: 100%;
@@ -194,9 +196,10 @@ button {
   display: block;
 
   height: 4px;
-  border-radius: 4px;
+  border-radius: 2px;
   left: 0;
-  bottom: -25px;
+  bottom: -1px;
+  background-color: var(--primary-brand);
 }
 .nav-list-link.current::after,
 .nav-list-link:hover::after,
@@ -262,7 +265,8 @@ button {
     url("../images/people-office.jpg");
   background-position: center;
   background-repeat: no-repeat;
-  background-size: 1440px;
+  background-size: cover;
+  max-width: 1440px;
 }
 
 /* features */
@@ -289,6 +293,8 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
+  border-radius: 4px;
+  margin-bottom: 8px;
 }
 /* about us */
 .about-section {
@@ -383,14 +389,22 @@ button {
   justify-content: center;
   gap: 24px;
 }
-
+.customers-list-item {
+  width: calc((100% - 120px) / 6);
+  height: 88px;
+}
 .customers-icon {
   fill: var(--subtitle-text);
   border-radius: 4px;
   border: 1px solid var(--subtitle-text);
   padding: 16px 32px;
-  transition: border-color var(--transition), fill var(--transition);
+  transition: border-color var(--transition), color var(--transition),
+    fill var(--transition);
   display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--subtitle-text);
 }
 
 .customers-icon:hover,
@@ -398,13 +412,17 @@ button {
   fill: var(--pressed-state);
   border: 1px solid var(--pressed-state);
   cursor: pointer;
+  color: var(--pressed-state);
+}
+.customers-icon-item {
+  fill: currentColor;
 }
 /* footer */
 .footer-container {
   display: flex;
   align-content: center;
-  align-items: flex-start;
-  gap: 120px;
+  align-items: baseline;
+  
 }
 .footer-background {
   background-color: var(--dark-color);
@@ -415,10 +433,12 @@ button {
   color: var(--light-color);
 }
 .footer-text {
-  color: var(--light-color);
+  color:var(--white-background) ;
   width: 264px;
 }
-
+.footer-wrap{
+  margin-right: 120px;
+}
 .flb {
   display: inline-block;
   margin-bottom: 16px;
@@ -537,7 +557,9 @@ button {
   width: 100%;
   height: 100%;
   background-color: var(--navyblue-modal, rgba(46, 47, 66, 0.4));
-  transition: transform 500ms, visibility 500ms, opacity 400ms;
+  /* transition: transform 500ms, visibility 500ms, opacity 400ms; */
+  transition: opasity var(--transition), visibility var(--transition),
+    transform 500ms;
 }
 .modal-window {
   width: 408px;
@@ -546,9 +568,10 @@ button {
   position: absolute;
   left: 50%;
   top: 50%;
-  transform: translateX(-50%) translateY(-50%);
-  
-  transition: transform 400ms linear;
+  transform: translate(-50%, -50%) scale(1);
+
+  /* transition: transform 400ms linear; */
+  transition: transform var(--transition);
   position: relative;
   border-radius: 4px;
   background-color: var(--modal-background);
@@ -559,9 +582,9 @@ button {
   width: 24px;
   height: 24px;
   border-radius: 50%;
-
+  padding: 0;
   border: 1px solid rgba(0, 0, 0, 0.1);
-  background-color: var(--light-color);
+  background-color: var(--accent-color);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -569,21 +592,24 @@ button {
   top: 24px;
   right: 24px;
   cursor: pointer;
-  transition: background-color var(--transition), fill var(--transition);
+
+  transition: background-color var(--transition), border var(--transition),
+    var(--transition);
 }
 .modal-close-btn:hover,
 .modal-close-btn:focus {
   background-color: var(--pressed-state);
-  fill: var(--light-color);
+  fill: var(--white-background);
+  border: none;
 }
 .is-hidden {
   pointer-events: none;
   visibility: hidden;
   opacity: 0;
- 
- 
 }
 .backdrop.is-hidden .modal-window {
   transform: translateX(-50%) translateY(10%);
-  
+}
+.modal-close-icon {
+  transition: fill var(--transition);
 }
