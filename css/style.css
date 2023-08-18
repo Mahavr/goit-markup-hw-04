@@ -13,6 +13,7 @@
   --hero-background: #2e2f42;
   --white-background: #ffffff;
   --modal-background: #fcfcfc;
+  --transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 /*
   |============================
@@ -57,7 +58,7 @@ li {
   margin: -1px;
   border: 0;
   padding: 0;
-  
+
   white-space: nowrap;
   clip-path: inset(100%);
   clip: rect(0 0 0 0);
@@ -91,7 +92,7 @@ button {
   color: var(--text-color);
 }
 .button {
-  background: var(--primary-brand);
+  background-color: var(--primary-brand);
 
   color: var(--white-background);
 
@@ -106,6 +107,7 @@ button {
   display: block;
   min-width: 169px;
   height: 56px;
+  transition: background-color var(--transition);
 }
 .button:hover,
 .button:focus {
@@ -181,6 +183,32 @@ button {
   padding-top: 24px;
   padding-bottom: 24px;
 }
+.list-link-wrap {
+  position: relative;
+}
+.nav-list-link::after {
+  content: "";
+  width: 100%;
+
+  position: absolute;
+  display: block;
+
+  height: 4px;
+  border-radius: 4px;
+  left: 0;
+  bottom: -25px;
+}
+.nav-list-link.current::after,
+.nav-list-link:hover::after,
+.nav-list-link:focus::after {
+  background-color: var(--primary-brand);
+  transition: background-color var(--transition);
+}
+.current {
+  color: var(--primary-brand);
+  transition: color var(--transition);
+}
+
 .nav-list-link:hover,
 .address-link:hover,
 .nav-list-link:focus,
@@ -227,6 +255,14 @@ button {
 .hero-section {
   background-color: var(--hero-background);
   padding: 188px 0 188px;
+  background-image: linear-gradient(
+      rgba(46, 47, 66, 0.7),
+      rgba(46, 47, 66, 0.7)
+    ),
+    url("../images/people-office.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 1440px;
 }
 
 /* features */
@@ -240,9 +276,19 @@ button {
 }
 .features-list-item {
   flex-basis: calc((100% - 3 * 24px) / 4);
+  display: flex;
+  flex-wrap: wrap;
 }
 .features-subtitle {
   margin-bottom: 8px;
+}
+.features-list-bg {
+  background-color: var(--light-color);
+  width: 100%;
+  height: 112px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 /* about us */
 .about-section {
@@ -269,6 +315,12 @@ button {
 .st-cards-text {
   padding-top: 32px;
   padding-bottom: 32px;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
 }
 
 .team-section {
@@ -279,15 +331,81 @@ button {
   background-color: var(--white-background);
   flex-basis: calc((100% - 3 * 8) / 4);
   border-radius: 0px 0px 4px 4px;
+  box-shadow: 0px 2px 1px 0px rgba(46, 47, 66, 0.08),
+    0px 1px 1px 0px rgba(46, 47, 66, 0.16),
+    0px 1px 6px 0px rgba(46, 47, 66, 0.08);
 }
 .team-subtitle {
   text-align: center;
-  margin-bottom: 8px;
 }
 .team-text {
   text-align: center;
 }
+.socials-list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+}
+.socials-list-item {
+  background-color: var(--primary-brand);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background var(--transition);
+}
+.list-item-icon {
+  fill: var(--white-background);
+  transition: fill var(--transition);
+}
+.socials-list-item:hover,
+.socials-list-item:focus {
+  background-color: var(--pressed-state);
+  cursor: pointer;
+}
+/*
+  |============================
+  | customers
+  |============================
+*/
+.customers-section {
+  padding: 120px 0 120px;
+}
+.customers-title {
+  margin-bottom: 72px;
+}
+.customers-list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+}
+
+.customers-icon {
+  fill: var(--subtitle-text);
+  border-radius: 4px;
+  border: 1px solid var(--subtitle-text);
+  padding: 16px 32px;
+  transition: border-color var(--transition), fill var(--transition);
+  display: block;
+}
+
+.customers-icon:hover,
+.customers-icon:focus {
+  fill: var(--pressed-state);
+  border: 1px solid var(--pressed-state);
+  cursor: pointer;
+}
 /* footer */
+.footer-container {
+  display: flex;
+  align-content: center;
+  align-items: flex-start;
+  gap: 120px;
+}
 .footer-background {
   background-color: var(--dark-color);
   padding-top: 100px;
@@ -304,6 +422,21 @@ button {
 .flb {
   display: inline-block;
   margin-bottom: 16px;
+}
+.footer-subtitle {
+  font-weight: 500;
+  color: var(--light-color);
+  margin-bottom: 16px;
+}
+.footer-socials-list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+.footer-socials-list .footer-icon:hover,
+.footer-socials-list .footer-icon:focus {
+  background-color: var(--success-color);
 }
 /*
   |============================
@@ -325,12 +458,16 @@ button {
   border: 1px solid var(--accent-color);
   min-width: 69px;
   padding: 12px 24px;
+  transition: color var(--transition), background-color var(--transition),
+    box-shadow var(--transition);
 }
 .portfolio-list-button:hover,
 .portfolio-list-button:focus {
   background-color: var(--pressed-state);
   color: var(--white-background);
   border: 1px solid transparent;
+  box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.12),
+    0px 2px 1px 0px rgba(0, 0, 0, 0.08), 0px 3px 1px 0px rgba(0, 0, 0, 0.1);
 }
 .pf-list {
   display: flex;
@@ -347,6 +484,10 @@ button {
 .pf-cards-item {
   flex-basis: calc((100% - 2 * 24) / 3);
 }
+.pf-cards-wrapper {
+  position: relative;
+  overflow: hidden;
+}
 .pf-cards-text {
   padding: 32px 16px;
   border: 1px solid var(--accent-color);
@@ -354,4 +495,95 @@ button {
 }
 .pf-subtitle {
   margin-bottom: 8px;
+}
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--primary-brand);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 32px;
+
+  transform: translateY(100%);
+  transition: transform 500ms linear;
+
+  /* will-change: transform; */
+}
+.overlay-text {
+  font-family: Roboto;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0.32px;
+  color: var(--light-color);
+}
+.pf-cards-wrapper:hover .overlay,
+.pf-cards-wrapper:focus .overlay {
+  transform: translateY(0%);
+}
+/*
+  |============================
+  | MODAL WINDOW
+  |============================
+*/
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  width: 100%;
+  height: 100%;
+  background-color: var(--navyblue-modal, rgba(46, 47, 66, 0.4));
+  transition: transform 500ms, visibility 500ms, opacity 400ms;
+}
+.modal-window {
+  width: 408px;
+  min-height: 584px;
+
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  
+  transition: transform 400ms linear;
+  position: relative;
+  border-radius: 4px;
+  background-color: var(--modal-background);
+  box-shadow: 0px 2px 1px 0px rgba(0, 0, 0, 0.2),
+    0px 1px 3px 0px rgba(0, 0, 0, 0.12), 0px 1px 1px 0px rgba(0, 0, 0, 0.14);
+}
+.modal-close-btn {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background-color: var(--light-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  cursor: pointer;
+  transition: background-color var(--transition), fill var(--transition);
+}
+.modal-close-btn:hover,
+.modal-close-btn:focus {
+  background-color: var(--pressed-state);
+  fill: var(--light-color);
+}
+.is-hidden {
+  pointer-events: none;
+  visibility: hidden;
+  opacity: 0;
+ 
+ 
+}
+.backdrop.is-hidden .modal-window {
+  transform: translateX(-50%) translateY(10%);
+  
 }
