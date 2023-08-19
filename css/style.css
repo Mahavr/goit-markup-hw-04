@@ -200,8 +200,7 @@ button {
   left: 0;
   bottom: -1px;
   background-color: var(--pressed-state);
-  
-  
+  /* ВИДАЛИТИ! */
 }
 .nav-list-link.current::after,
 .nav-list-link:hover::after,
@@ -247,18 +246,6 @@ button {
   flex-direction: column;
   align-items: center;
   gap: 48px;
-}
-.hero-title {
-  color: var(--white-background);
-  text-align: center;
-  font-size: 56px;
-  max-width: 496px;
-  font-weight: 700;
-  line-height: 1.07;
-  letter-spacing: 1.12px;
-}
-
-.hero-section {
   background-color: var(--hero-background);
   padding: 188px 0 188px;
   background-image: linear-gradient(
@@ -270,6 +257,15 @@ button {
   background-repeat: no-repeat;
   background-size: cover;
   max-width: 1440px;
+}
+.hero-title {
+  color: var(--white-background);
+  text-align: center;
+  font-size: 56px;
+  max-width: 496px;
+  font-weight: 700;
+  line-height: 1.07;
+  letter-spacing: 1.12px;
 }
 
 /* features */
@@ -364,10 +360,13 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background var(--transition);
+  transition: background-color var(--transition);
+}
+.socials-list-link {
+  transition: background-color var(--transition);
 }
 .list-item-icon {
-  fill: var(--white-background);
+  fill: var(--light-color);
   transition: fill var(--transition);
 }
 .socials-list-item:hover,
@@ -401,13 +400,13 @@ button {
   border-radius: 4px;
   border: 1px solid var(--subtitle-text);
   padding: 16px 32px;
-  transition: border-color var(--transition), color var(--transition),
-    fill var(--transition);
+  transition: border-color var(--transition), color var(--transition);
   display: block;
   display: flex;
   align-items: center;
   justify-content: center;
   color: var(--subtitle-text);
+  height: 100%;
 }
 
 .customers-icon:hover,
@@ -425,7 +424,6 @@ button {
   display: flex;
   align-content: center;
   align-items: baseline;
-  
 }
 .footer-background {
   background-color: var(--dark-color);
@@ -436,10 +434,10 @@ button {
   color: var(--light-color);
 }
 .footer-text {
-  color:var(--white-background) ;
+  color: var(--white-background);
   width: 264px;
 }
-.footer-wrap{
+.footer-wrap {
   margin-right: 120px;
 }
 .flb {
@@ -482,7 +480,7 @@ button {
   min-width: 69px;
   padding: 12px 24px;
   transition: color var(--transition), background-color var(--transition),
-    box-shadow var(--transition);
+    border-color var(--transition), box-shadow var(--transition);
 }
 .portfolio-list-button:hover,
 .portfolio-list-button:focus {
@@ -504,13 +502,17 @@ button {
   flex-wrap: wrap;
   row-gap: 48px;
 }
-.pf-cards-item {
-  flex-basis: calc((100% - 2 * 24) / 3);
-}
-.pf-cards-wrapper {
+.pf-cards-link {
+  display: block;
   position: relative;
   overflow: hidden;
 }
+
+.pf-cards-item {
+  flex-basis: calc((100% - 2 * 24) / 3);
+  transition: box-shadow var(--transition);
+}
+
 .pf-cards-text {
   padding: 32px 16px;
   border: 1px solid var(--accent-color);
@@ -543,9 +545,11 @@ button {
   letter-spacing: 0.32px;
   color: var(--light-color);
 }
-.pf-cards-wrapper:hover .overlay,
-.pf-cards-wrapper:focus .overlay {
+.pf-cards-link:hover .overlay,
+.pf-cards-link:focus .overlay{
   transform: translateY(0%);
+  box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08),
+    0px 1px 1px rgba(46, 47, 66, 0.16), 0px 2px 1px rgba(46, 47, 66, 0.08);
 }
 /*
   |============================
@@ -561,8 +565,7 @@ button {
   height: 100%;
   background-color: var(--navyblue-modal, rgba(46, 47, 66, 0.4));
   /* transition: transform 500ms, visibility 500ms, opacity 400ms; */
-  transition: opasity var(--transition), visibility var(--transition),
-    transform 500ms;
+  transition: opasity var(--transition), visibility var(--transition);
 }
 .modal-window {
   width: 408px;
@@ -596,8 +599,7 @@ button {
   right: 24px;
   cursor: pointer;
 
-  transition: background-color var(--transition), border var(--transition),
-    var(--transition);
+  transition: background-color var(--transition), border var(--transition);
 }
 .modal-close-btn:hover,
 .modal-close-btn:focus {
