@@ -196,7 +196,7 @@ button {
   display: block;
 
   height: 4px;
-  background-color: var(--pressed-state);
+  background-color: #404bbf; 
   border-radius: 2px;
   left: 0;
   bottom: -1px;
@@ -514,7 +514,7 @@ button {
 }
 .pf-cards-item {
   flex-basis: calc((100% - 2 * 24) / 3);
-  transition: box-shadow var(--transition);
+ transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .pf-cards-text {
@@ -525,23 +525,7 @@ button {
 .pf-subtitle {
   margin-bottom: 8px;
 }
-.overlay {
-  /* position: absolute;
-  top: 0; */
-  /* left: 0; */
-  /* width: 100%;
-  height: 100%; */
-  /* background-color: var(--primary-brand); */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  /* padding: 40px 32px; */
 
-  /* transform: translateY(100%); */
-  /* transition: transform 500ms linear; */
-
-  /* will-change: transform; */
-}
 .overlay-text {
   position: absolute;
   top: 0;
