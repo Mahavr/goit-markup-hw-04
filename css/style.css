@@ -196,19 +196,19 @@ button {
   display: block;
 
   height: 4px;
-  background-color: #404bbf; 
+  background-color: #404bbf;
   border-radius: 2px;
   left: 0;
   bottom: -1px;
 
   /* ВИДАЛИТИ! current and bg*/
 }
-.nav-list-link.current::after,
+/* .nav-list-link.current::after,
 .nav-list-link:hover::after,
 .nav-list-link:focus::after {
   background-color: var(--primary-brand);
   transition: background-color var(--transition);
-}
+} */
 .current {
   color: var(--pressed-state);
   transition: color var(--transition);
@@ -254,6 +254,7 @@ button {
   background-repeat: no-repeat;
   background-size: cover;
   max-width: 1440px;
+  margin: 0 auto; 
 }
 .hero-container {
   display: flex;
@@ -507,6 +508,7 @@ button {
 }
 .pf-cards-link {
   display: block;
+  transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .pf-cards-wrapper {
   position: relative;
@@ -514,7 +516,6 @@ button {
 }
 .pf-cards-item {
   flex-basis: calc((100% - 2 * 24) / 3);
- transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .pf-cards-text {
@@ -550,6 +551,7 @@ button {
   box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08),
     0px 1px 1px rgba(46, 47, 66, 0.16), 0px 2px 1px rgba(46, 47, 66, 0.08);
 }
+
 /*
   |============================
   | MODAL WINDOW
@@ -578,7 +580,7 @@ button {
 
   /* transition: transform 400ms linear; */
   transition: transform var(--transition);
-  position: relative;
+  
   border-radius: 4px;
   background-color: var(--modal-background);
   box-shadow: 0px 2px 1px 0px rgba(0, 0, 0, 0.2),
