@@ -199,7 +199,9 @@ button {
   border-radius: 2px;
   left: 0;
   bottom: -1px;
-  background-color: var(--primary-brand);
+  background-color: var(--pressed-state);
+  
+  
 }
 .nav-list-link.current::after,
 .nav-list-link:hover::after,
@@ -208,7 +210,7 @@ button {
   transition: background-color var(--transition);
 }
 .current {
-  color: var(--primary-brand);
+  color: var(--pressed-state);
   transition: color var(--transition);
 }
 
@@ -237,6 +239,7 @@ button {
 
   padding-top: 24px;
   padding-bottom: 24px;
+  transition: color var(--transition);
 }
 /* hero */
 .hero-container {
